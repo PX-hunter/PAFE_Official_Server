@@ -24,7 +24,7 @@ git cz
 
 commitizen分为Type，Scoped，Subject，Body，Footer五部分，约定Body为选填，其余部分为必填
 
-1. Type：选择提交类型
+1. **[Type]()**：选择提交类型
 - feat：添加新功能（feature）
 - fix：修补bug
 - docs：文档，注释改动
@@ -34,16 +34,16 @@ commitizen分为Type，Scoped，Subject，Body，Footer五部分，约定Body为
 - test：增加测试
 - chore：构建过程或辅助工具的变动
 
-2. Scoped：说明本次 commit 影响范围
+2. **[Scoped]()**：说明本次 commit 影响范围
 - all：影响全局
 - part：影响局部
 
-3. Subject：简述本次改动
+3. **[Subject]()**：简述本次改动
   - 如 add user interface
 
-4. Body：对 Subject 做详尽描述
+4. **[Body]()**：对 Subject 做详尽描述
 
-5. Footer：针对不兼容变更和 Issue 关闭
+5. **[Footer]()**：针对不兼容变更和 Issue 关闭
 
 ### 详细介绍见文档 **[Commitizen doc](https://github.com/commitizen/cz-cli)**
 
