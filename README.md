@@ -11,7 +11,7 @@ Node.js >= 8.0.0 required.
 
 ## Docs
 
-- [data model](/docs/commitizen)
+- [commitizen](/docs/commitizen.md)
 
 ## Getting Started
 
