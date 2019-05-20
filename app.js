@@ -36,6 +36,7 @@ app.use(async (ctx, next) => {
 
 // 日志
 const ENV = process.env.NODE_ENV
+
 if (ENV !== 'production') {
   app.use(morgan('dev'))
 } else {
