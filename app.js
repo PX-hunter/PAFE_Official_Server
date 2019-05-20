@@ -1,5 +1,5 @@
 const Koa = require('koa')
-const app = new Koa()
+const Router = require('koa-router')
 const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
@@ -9,6 +9,9 @@ const redisStore = require('koa-redis')
 const path = require('path')
 const fs = require('fs')
 const morgan = require('koa-morgan')
+const requireDirectory = require('require-directory')
+
+const app = new Koa()
 
 const user = require('./routes/user')
 const blog = require('./routes/blog')
@@ -65,8 +68,18 @@ app.use(session({
 }))
 
 // routes
-app.use(user.routes(), user.allowedMethods())
-app.use(blog.routes(), blog.allowedMethods())
+// app.use(user.routes(), user.allowedMethods())
+// app.use(blog.routes(), blog.allowedMethods())
+// 路由动态加载：require-directory可加载文件夹下嵌套文件，也可加载单文件
+const apiDirectory = `${process.cwd()}/routes`; //  拼接绝对路径
+requireDirectory(module, apiDirectory, {
+  visit: whenLoadModule //  加载一个单位（文件夹/文件）后回调
+});
+function whenLoadModule(obj) {
+  if (obj instanceof Router) {
+    app.use(obj.routes(), blog.allowedMethods())
+  }
+}
 
 // error-handling
 app.on('error', (err, ctx) => {

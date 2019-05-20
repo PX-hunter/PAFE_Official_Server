@@ -5,7 +5,6 @@ router.prefix('/api/user')
 
 router.post('/login', async (ctx, next) => {
   const { username, password } = ctx.request.body
-  console.log(123)
   const data = await login(username, password)
   if (data.username) {
     // req设置session反映在session对象中
